@@ -21,7 +21,7 @@ It implements REST APIs to handle orders, order items, and customer details.
 ![Create Order](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/image%20scene%201.jpeg)
 
 ### Scenario 2: Retrieve Order
-![Retrieve Order](screenshots/scenario2_get_order.png)
+![Retrieve Order](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/image%20scene%202.jpeg)
 
 ### Scenario 3: Update Order Item
 ![Update Item](screenshots/scenario3_update_item.png)
