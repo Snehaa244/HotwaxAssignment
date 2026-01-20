@@ -30,7 +30,7 @@ It implements REST APIs to handle orders, order items, and customer details.
 ![Add Item](screenshots/scenario4_add_item.png)
 
 ### Scenario 5: Delete Order Item
-![Delete Item](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/delete.jpeg)
+![Delete Item](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/deleteee.jpeg)
 
 ### Scenario 6: Delete Order
 ![Delete Order](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/deleteee.jpeg)
