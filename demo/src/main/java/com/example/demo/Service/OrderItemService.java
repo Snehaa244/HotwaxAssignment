@@ -1,11 +1,10 @@
 package com.example.demo.Service;
 
-import com.example.demo.model.OrderHeader;
+import com.example.demo.model.Order;
 import com.example.demo.model.OrderItem;
-import com.example.demo.model.Product;
-import com.example.demo.repository.OrderHeaderRepository;
 import com.example.demo.repository.OrderItemRepository;
-import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,51 +12,31 @@ import java.util.List;
 @Service
 public class OrderItemService {
 
-    private final OrderItemRepository orderItemRepository;
-    private final OrderHeaderRepository orderHeaderRepository;
-    private final ProductRepository productRepository;
 
-    public OrderItemService(OrderItemRepository orderItemRepository,
-                            OrderHeaderRepository orderHeaderRepository,
-                            ProductRepository productRepository) {
-        this.orderItemRepository = orderItemRepository;
-        this.orderHeaderRepository = orderHeaderRepository;
-        this.productRepository = productRepository;
+    @Autowired
+    private OrderItemRepository repo;
+
+    public OrderItem save(OrderItem item) {
+        return repo.save(item);
     }
 
-    // Add Item
-    public OrderItem addItem(Integer orderId, Integer productId, OrderItem item) {
-
-        OrderHeader order = orderHeaderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
-
-        Product product = productRepository.findById(Long.valueOf(productId))
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-
-        item.setOrderHeader(order);
-        item.setProduct(product);
-
-        return orderItemRepository.save(item);
+    public List<OrderItem> getAll() {
+        return repo.findAll();
+    }
+    public List<OrderItem> getByOrderId(Integer orderId) {
+        return repo.findByOrderId(orderId);
     }
 
-    // Get Items by Order
-    public List<OrderItem> getItemsByOrder(Integer orderId) {
-        return orderItemRepository.findByOrderHeaderOrderId(orderId);
+    public OrderItem getById(Integer id) {
+        return repo.findById(id).orElse(null);
     }
 
-    // Update Item
-    public OrderItem updateItem(Integer itemId, OrderItem updated) {
-        OrderItem existing = orderItemRepository.findById(itemId)
-                .orElseThrow(() -> new RuntimeException("Order item not found"));
-
-        existing.setQuantity(updated.getQuantity());
-        existing.setStatus(updated.getStatus());
-
-        return orderItemRepository.save(existing);
+    public void delete(Integer id) {
+        repo.deleteById(id);
     }
 
-    // Delete Item
-    public void deleteItem(Integer itemId) {
-        orderItemRepository.deleteById(itemId);
+    public void deleteByOrderId(Integer orderId) {
+        List<OrderItem> items = repo.findByOrderId(orderId);
+        repo.deleteAll(items);
     }
 }

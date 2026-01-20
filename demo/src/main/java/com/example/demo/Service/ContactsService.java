@@ -1,28 +1,28 @@
 package com.example.demo.Service;
 
-
-import com.example.demo.model.Customer;
-import com.example.demo.repository.CustomerRepo;
+import com.example.demo.model.Contacts;
+import com.example.demo.repository.ContactsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class ContactsService {
+
 
     @Autowired
-    private CustomerRepo repo;
+    private ContactsRepo repo;
 
-    public Customer save(Customer c) {
+    public Contacts save(Contacts c) {
         return repo.save(c);
     }
 
-    public List<Customer> getAll() {
+    public List<Contacts> getAll() {
         return repo.findAll();
     }
 
-    public Customer getById(int id) {
+    public Contacts getById(int id) {
         return repo.findById(id).orElse(null);
     }
 

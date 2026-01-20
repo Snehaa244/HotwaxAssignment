@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Customer;
-import com.example.demo.service.CustomerService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,42 +10,33 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    @Autowired
+    private com.example.demo.Service.CustomerService service;
 
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
-
-    // Create Customer
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        return new ResponseEntity<>(customerService.createCustomer(customer), HttpStatus.CREATED);
+    public Customer create(@RequestBody Customer c) {
+        return service.save(c);
     }
 
-    // Get All Customers
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        return ResponseEntity.ok(customerService.getAllCustomers());
+    public List<Customer> getAll() {
+        return service.getAll();
     }
 
-    // Get Customer by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id) {
-        return ResponseEntity.ok(customerService.getCustomerById(id));
+    public Customer getById(@PathVariable int id) {
+        return service.getById(id);
     }
 
-    // Update Customer
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(
-            @PathVariable Integer id,
-            @RequestBody Customer customer) {
-        return ResponseEntity.ok(customerService.updateCustomer(id, customer));
+    public Customer update(@PathVariable int id, @RequestBody Customer c) {
+        c.setCustomerId(id);
+        return service.save(c);
     }
 
-    // Delete Customer
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Integer id) {
-        customerService.deleteCustomer(id);
-        return ResponseEntity.noContent().build();
+    public String delete(@PathVariable int id) {
+        service.delete(id);
+        return "Customer deleted";
     }
 }
