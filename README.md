@@ -12,87 +12,13 @@ It implements REST APIs to handle orders, order items, and customer details.
 3. [API Endpoints](#api-endpoints)
 4. [Test Scenarios](#test-scenarios)
 5. [Screenshots](#screenshots)
-6. [Setup Instructions](#setup-instructions)
+6. [Setup Instructions](#setup-instructions)|
 
----
-
-## **Project Overview**
-
-- Java Spring Boot backend
-- RESTful APIs using JSON
-- MySQL / H2 database
-- CRUD operations for Orders and Order Items
-- JWT authentication (optional/bonus)
-
----
-
-## **Database Schema**
-
-**Tables:**
-- Customer
-- Contact_Mech
-- Product
-- Order_Header
-- Order_Item
-
-**Relationships:**
-- Order_Header → Customer, Shipping & Billing Contact_Mech
-- Order_Item → Order_Header & Product
-
----
-
-## **API Endpoints**
-
-| Operation | Method | URL | Description |
-|-----------|--------|-----|-------------|
-| Create Order | POST | /orders | Create new order |
-| Retrieve Order | GET | /orders/{orderId} | Get order details |
-| Update Order Item | PUT | /orders/{orderId}/items/{itemId} | Update item quantity/status |
-| Add Order Item | POST | /orders/{orderId}/items | Add new item to order |
-| Delete Order Item | DELETE | /orders/{orderId}/items/{itemId} | Remove item from order |
-| Delete Order | DELETE | /orders/{orderId} | Delete entire order |
-
----
-
-## **Test Scenarios**
-
-### **Scenario 1: Create Order**
-- **Customer:** John Doe
-- **Shipping Contact:** 1600 Amphitheatre Parkway
-- **Billing Contact:** 1 Infinite Loop
-- **Items:** T-Shirt x2, Jeans x1
-- **Expected:** 201 Created, response contains orderId and items
-
-### **Scenario 2: Retrieve Order**
-- **GET** `/orders/{orderId}`
-- **Expected:** 200 OK, JSON contains order details and all items
-
-### **Scenario 3: Update Order Item**
-- **PUT** `/orders/{orderId}/items/{itemId}`
-- **Update:** Quantity of Jeans → 2
-- **Expected:** 200 OK, item quantity updated
-
-### **Scenario 4: Add Order Item**
-- **POST** `/orders/{orderId}/items`
-- **Item:** Sneakers x1
-- **Expected:** 201 Created, new item added
-
-### **Scenario 5: Delete Order Item**
-- **DELETE** `/orders/{orderId}/items/{itemId}`
-- **Item:** T-Shirt
-- **Expected:** 204 No Content, item removed
-
-### **Scenario 6: Delete Order**
-- **DELETE** `/orders/{orderId}`
-- **Expected:** 204 No Content
-- **Verify:** GET `/orders/{orderId}` → 404 Not Found
-
----
 
 ## **Screenshots**
 
 ### Scenario 1: Create Order
-![Create Order](screenshots/scenario1_create_order.png)
+![Create Order](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/image%20scene%201.jpeg)
 
 ### Scenario 2: Retrieve Order
 ![Retrieve Order](screenshots/scenario2_get_order.png)
