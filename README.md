@@ -33,7 +33,7 @@ It implements REST APIs to handle orders, order items, and customer details.
 ![Delete Item](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/delete.jpeg)
 
 ### Scenario 6: Delete Order
-![Delete Order](screenshots/scenario6_delete_order.png)
+![Delete Order](https://github.com/Snehaa244/HotwaxAssignment/blob/main/Images/deleteee.jpeg)
 
 > **Note:** Place all screenshot images in a folder named `screenshots/` in your repository.
 
